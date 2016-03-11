@@ -31,3 +31,13 @@ endif()
 if(EXISTS ${INSTALL_PREFIX}/lib/libopenh264.1.dylib)
 	execute_process(COMMAND install_name_tool -id @rpath/libopenh264.1.dylib ${INSTALL_PREFIX}/lib/libopenh264.1.dylib)
 endif()
+
+file(GLOB OPENH264_LIBS "${INSTALL_PREFIX}/lib/libopenh264.*.dylib")
+foreach(OPENH264_LIB IN LISTS ${OPENH264_LIBS})
+	string(REGEX REPLACE ".+/(libopenh264\..\.dylib)$" 
+		"@rpath/\1"
+		OPENH264_LIB_ID
+		${OPENH264_LIB}
+	)
+	execute_process(COMMAND install_name_tool -id ${OPENH264_LIB_ID} ${OPENH264_LIB})
+endforeach()
