@@ -21,7 +21,7 @@
 ############################################################################
 
 if(EXISTS ${INSTALL_PREFIX}/lib/libopenh264.a)
-	execute_process(COMMAND "ranlib" "${INSTALL_PREFIX}/lib/libopenh264.a")
+       execute_process(COMMAND ${CMAKE_RANLIB} "${INSTALL_PREFIX}/lib/libopenh264.a")
 endif()
 
 if(EXISTS ${INSTALL_PREFIX}/bin/openh264.dll AND NOT EXISTS ${INSTALL_PREFIX}/lib/openh264_dll.lib)
