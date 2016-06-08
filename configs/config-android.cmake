@@ -131,7 +131,7 @@ set(EP_vpx_LINKING_TYPE "--enable-static" "--disable-shared")
 # x264
 set(EP_x264_LINKING_TYPE "--enable-static" "--enable-pic")
 set(EP_x264_INSTALL_TARGET "install-lib-static")
-
+set(EP_openh264_LINKING_TYPE "")
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	# GDB server setup
